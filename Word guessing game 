@@ -1,0 +1,143 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNJYKglVdmj1KAX9TTGr1zX",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/GarvinAgweli/personal/blob/main/Word%20guessing%20game%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "mEw9pbpEQyXv"
+      },
+      "outputs": [],
+      "source": [
+        "import random"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def choose_word():\n",
+        "   words=[\"Apple\",\"Banana\",\"Mango\",\"Cherry\"]\n",
+        "   return random.choice(words)"
+      ],
+      "metadata": {
+        "id": "CBIVuD1NSb3b"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def word_status(word,guessed_letters):\n",
+        "  display = \"\"\n",
+        "  for letter in word:\n",
+        "    if letter in guessed_letters:\n",
+        "      display += letter\n",
+        "    else:\n",
+        "      display += \"_\"\n",
+        "  return display"
+      ],
+      "metadata": {
+        "id": "sSalJJKqUNBu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def word_guessing_game():\n",
+        "  word = choose_word()\n",
+        "  guessed_letters = []\n",
+        "  attempts = 5\n",
+        "  print(\"Welcome to the word guessing game\")\n",
+        "  print(f\"You have {attempts} attempts\")\n",
+        "  print(f\"Word: {word_status(word, guessed_letters)}\")\n",
+        "\n",
+        "  while attempts > 0:\n",
+        "    guessed_letter = input(\"Guess a letter: \").lower()\n",
+        "\n",
+        "    if len(guessed_letter) != 1 or not guessed_letter.isalpha():\n",
+        "      print(\"You must enter a single letter.\")\n",
+        "      continue\n",
+        "\n",
+        "    if guessed_letter in guessed_letters:\n",
+        "      print(\"You already guessed that letter.\")\n",
+        "      continue\n",
+        "\n",
+        "    guessed_letters.append(guessed_letter)\n",
+        "\n",
+        "    if guessed_letter in word.lower():\n",
+        "      print(f\"Good guess! '{guessed_letter}' is in the word.\")\n",
+        "    else:\n",
+        "      attempts -= 1\n",
+        "      print(f\"Sorry, '{guessed_letter}' is not in the word. You have {attempts} attempts left.\")\n",
+        "\n",
+        "    current_status = word_status(word, guessed_letters)\n",
+        "    print(f\"Word: {current_status}\")\n",
+        "\n",
+        "    if \"_\" not in current_status:\n",
+        "      print(\"Congratulations! You guessed the word!\")\n",
+        "      break\n",
+        "\n",
+        "  if attempts == 0:\n",
+        "    print(f\"Game over! The word was '{word}'.\")"
+      ],
+      "metadata": {
+        "id": "YEPFc-IkVvxY"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# New Section"
+      ],
+      "metadata": {
+        "id": "d7ynJtrbhcOi"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# New Section"
+      ],
+      "metadata": {
+        "id": "-ORxi9uKhepa"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "9yFIzvcjgPj0"
+      }
+    }
+  ]
+}
