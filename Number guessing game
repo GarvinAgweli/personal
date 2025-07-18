@@ -1,0 +1,119 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMDTuIxP6c5MYNA20a5bcTV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/GarvinAgweli/personal/blob/main/Number%20guessing%20game\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "lowest_number = 1\n",
+        "highest_number = 100\n",
+        "answer = random.randint(lowest_number, highest_number)\n",
+        "guesses = 0\n",
+        "max_guesses = 5\\  # Set the maximum number of guesses\n",
+        "is_running = True\n",
+        "print(\"Welcome to number guessing game\")\n",
+        "print(f\"Guess the number between {lowest_number} and {highest_number}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sHiHg1VTi__p",
+        "outputId": "627fcb14-8af2-478c-f6f2-6fc1c77f8908"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Welcome to number guessing game\n",
+            "Guess the number between 1 and 100\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "while is_running and guesses < max_guesses:\n",
+        "    try:\n",
+        "        guess_str = input(\"Enter a number:\")\n",
+        "        if guess_str.isdigit():\n",
+        "            guess = int(guess_str)\n",
+        "            guesses += 1\n",
+        "            if guess < lowest_number or guess > highest_number:\n",
+        "                print(f\"Please enter a number between {lowest_number} and {highest_number}\")\n",
+        "            elif guess < answer:\n",
+        "                print(\"Too low!\")\n",
+        "            elif guess > answer:\n",
+        "                print(\"Too high!\")\n",
+        "            else:\n",
+        "                print(f\"Congratulations! You guessed the number in {guesses} guesses.\")\n",
+        "                is_running = False\n",
+        "        else:\n",
+        "            print(\"Invalid input. Please enter a number.\")\n",
+        "    except ValueError:\n",
+        "        print(\"Invalid input. Please enter a number.\")\n",
+        "\n",
+        "if not is_running:\n",
+        "    pass # Game ended because the user guessed correctly\n",
+        "elif guesses == max_guesses:\n",
+        "    print(f\"You ran out of guesses! The number was {answer}.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "h2uVdH5Xklup",
+        "outputId": "e72fa933-0cc2-43bc-837d-2b415541be2a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number:80\n",
+            "Too high!\n",
+            "Enter a number:50\n",
+            "Too high!\n",
+            "Enter a number:40\n",
+            "Too low!\n",
+            "Enter a number:45\n",
+            "Too high!\n",
+            "Enter a number:43\n",
+            "Too low!\n",
+            "You ran out of guesses! The number was 44.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
